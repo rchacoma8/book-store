@@ -22,10 +22,10 @@ public class BookStock {
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-   
-    // @OneToMany(mappedBy = "items", fetch = FetchType.LAZY,
+    // We could add the relationship, but it making the order items point to the books makes more sense
+    // @OneToMany(mappedBy = "bookStock", fetch = FetchType.LAZY,
     // cascade = CascadeType.ALL)
-    // private Set<BookOrderItem> items; 
+    // private Set<BookOrderItem> bookStock = new HashSet<>();
 
     public String getId() {
         return id;

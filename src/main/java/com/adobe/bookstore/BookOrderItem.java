@@ -65,15 +65,15 @@ public class BookOrderItem {
         return bookStock.getId();
     }
 
-    // public void setBookStock(BookStock bookStock) {
-    //     this.bookStock = bookStock;
-    // }
+    public void setBookStock(BookStock bookStock) {
+        this.bookStock = bookStock;
+    }
 
     @Override
     public String toString() {
         return "Item: {" +
                 "id=" + id +
-                //", order='" + bookOrder + '\'' +
+                ", order='" + bookOrder + '\'' +
                 ", book=" + bookStock +
                 ", quantity=" + quantity +
                 '}';

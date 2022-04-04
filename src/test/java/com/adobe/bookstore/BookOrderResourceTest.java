@@ -89,7 +89,11 @@ class BookOrderResourceTest {
                 .post("/order")
                 .accept(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(body))
-                .contentType(MediaType.APPLICATION_JSON);        
+                .contentType(MediaType.APPLICATION_JSON);   
+        // TODO: Send the JSON to the post method and see that the response is the UUID with an Ok status, in a Hashmap  
     }
+
+    //TODO: Add test to check the POST method, when there is not enough stock and expect 452
+    //TODO: Add test to check the POST method, when one of the books does not exist and expect 404
 
 }
