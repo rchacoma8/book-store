@@ -117,8 +117,7 @@ public class BookOrderResource {
         bookOrder.setOrderDate(new Date());
         bookOrder.setSuccess(true);
 
-        UUID generatedUUID = null;
-        generatedUUID =  bookOrderRepository.save(bookOrder).getId();
+        UUID generatedUUID = bookOrderRepository.save(bookOrder).getId();
 
         proccessOrder(newBookOrder.get("order"), bookOrder);
         
@@ -126,12 +125,12 @@ public class BookOrderResource {
         CompletableFuture.runAsync(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(10000); //Sleep 10 seconds, se we can check it is a non-blocking process.
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-        
+                // Comment out for testing purporses
+                // try {
+                //     Thread.sleep(10000); //Sleep 10 seconds, se we can check it is a non-blocking process.
+                // } catch (InterruptedException e) {
+                //     e.printStackTrace();
+                // }
         
                 newBookOrder.get("order").forEach(item -> {
                     int solicitedQuantity = Integer.parseInt(item.get("quantity"));
@@ -174,14 +173,6 @@ public class BookOrderResource {
 
     @Async
     void updateStock(List<HashMap<String, String>> listorder, BookOrder bookOrder){
-
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
         listorder.forEach(item -> {
             int solicitedQuantity = Integer.parseInt(item.get("quantity"));
 
