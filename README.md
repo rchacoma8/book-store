@@ -38,6 +38,11 @@ with body:
 - Move files by feature to folders: bookstock, bookorder, bookorderitem.
 - Prevent concurrency error - while updating stock, another thread can process an order (see if there is enough stock), but later find out that there is not enough stock.
 - Extract async function to process the order. I believe it needs to be in a different file (Service) from the one calling.
+- Add unit tests, database tests, concurrency tests and so.
+
+
+---
+
 
 ## Dev part
 
