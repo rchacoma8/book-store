@@ -39,7 +39,14 @@ class BookOrderResourceTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnOrdersIsEmpty() {
+    public void shouldReturnOrdersIsEmptyWithoutHttpStatus() {
+        var result = restTemplate.getForObject("http://localhost:" + port + "/orders_without_http_status/", HashMap.class);
+
+        assertEquals(result.get("orders"), Collections.EMPTY_LIST);
+    }
+
+    @Test
+    public void shouldReturnOrdersIsEmptyWithHttpStatus() {
         var result = restTemplate.getForObject("http://localhost:" + port + "/orders/", HashMap.class);
 
         assertEquals(result.get("orders"), Collections.EMPTY_LIST);

@@ -9,7 +9,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
@@ -37,16 +39,27 @@ public class BookOrderResource {
     @Autowired
     private BookOrderItemRepository bookOrderItemRepository;
 
-    @RequestMapping("/orders/")
+    @RequestMapping("/orders_without_http_status/")
     @ResponseBody
     @GetMapping
-    public HashMap<String, List<BookOrder>>  getBookOrders() {
+    public HashMap<String, List<BookOrder>>  getBookOrdersWithoutHttpStatus() {
         HashMap<String, List<BookOrder>> map = new HashMap<>();
         
         List<BookOrder> orders = this.bookOrderRepository.findAll();
         map.put("orders", orders);
 
         return map;
+    }
+
+    @RequestMapping("/orders/")
+    @ResponseBody
+    @GetMapping
+    public ResponseEntity<HashMap<String, List<BookOrder>>>  getBookOrders() {
+        HashMap<String, List<BookOrder>> map = new HashMap<>();
+        
+        List<BookOrder> orders = this.bookOrderRepository.findAll();
+        map.put("orders", orders);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @RequestMapping(
