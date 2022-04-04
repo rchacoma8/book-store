@@ -4,7 +4,7 @@
 ## JSON structure
 
 #### Post order examples:
-``` http://localhost:8085/order/ ```
+``` http://localhost:8080/order/ ```
 with body:
 
 ```
@@ -27,10 +27,10 @@ with body:
 ```
 
 #### Get all orders
-``` http://localhost:8085/orders/ ```
+``` http://localhost:8080/orders/ ```
 
 #### Get all stock
-``` http://localhost:8085/books_stock/all ```
+``` http://localhost:8080/books_stock/all ```
 
 ## Improvements
 
